@@ -212,7 +212,7 @@ class Client extends EventEmitter {
                 this.emit(Events.QR_RECEIVED, qr);
 
        await page.screenshot({
-        path: 'public/hassan.png', fullPage: true
+        path: 'public/mycompanion.png', fullPage: true
                }); 
 
                 if (this.options.qrMaxRetries > 0) {

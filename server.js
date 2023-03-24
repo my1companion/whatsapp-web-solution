@@ -1,9 +1,13 @@
 var express = require('express');
 var app = express();
 var client = require('./example');
-//whatsapp();
+const cors = require('cors');
+const bodyParser = require('body-parser');
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
+app.use(cors()); 
 app.use(express.static('public'));
+app.use(bodyParser.json());
 
 
 app.get('/', function (req, res) {
@@ -17,9 +21,33 @@ app.get('/', function (req, res) {
 
 })
 
-var server = app.listen(8081, function () {
-   var host = server.address().address
-   var port = server.address().port
-   
-   console.log("Example app listening at http://%s:%s", host, port)
+app.post("/sendmessage", (req,res,next) =>{
+
+	const {body: {message, recepient}} = req;
+
+	if(!message || !recepient){
+		return res.status(400).json('incomplete credentials');
+	}
+	var receiver = recepient+"@c.us";
+	
+    try{
+    const sendMessage = client.sendMessage(receiver,message);
+}catch(err){
+    console.log(err);
+	res.send(err);
+}
+
+   res.send('Sent');
+	
 })
+
+//var server = app.listen(8081, function () {
+//   var host = server.address().address
+//   var port = server.address().port
+   
+//   console.log("Example app listening at http://%s:%s", host, port)
+//})
+
+app.listen(process.env.PORT || 3031, ()=>{
+    console.log(`app is running ${process.env.PORT}`);
+});
