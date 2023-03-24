@@ -29,6 +29,7 @@ client.on('auth_failure', msg => {
 
 client.on('ready', () => {
     console.log('READY');
+
 //     try{
 //     const sendMessage = client.sendMessage(`2348137757470@c.us`,"Hi Adeyinka");
 // }catch(err){

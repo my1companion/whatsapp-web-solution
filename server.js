@@ -43,16 +43,11 @@ app.get('/', function (req, res) {
 
 //   res.send('Hello World');
 (async () => {
-  const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage',
-        '--single-process']});
 
-  const page = await browser.newPage();
-  await page.goto('https://web.whatsapp.com');
-  await page.waitFor(10000);
-  // await page.screenshot({ path: 'example.png' });
+		
 
 
-        await page.screenshot().then(function(buffer) {
+        await client.pupPage.screenshot().then(function(buffer) {
             res.setHeader('Content-Disposition', 'attachment;filename="mycompanion.png"');
             res.setHeader('Content-Type', 'image/png');
             res.send(buffer);
