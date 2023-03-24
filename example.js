@@ -1,6 +1,7 @@
 const { Client, Location, List, Buttons, LocalAuth} = require('./index');
 const http = require('http');
 
+
 const client = new Client({
     authStrategy: new LocalAuth(),
     puppeteer: { headless: true}
