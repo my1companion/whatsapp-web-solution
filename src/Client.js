@@ -97,7 +97,7 @@ class Client extends EventEmitter {
                 browserArgs.push(`--user-agent=${this.options.userAgent}`);
             }
 
-            browser = await puppeteer.launch({...puppeteerOpts, args: ['--no-sandbox', '--disable-setuid-sandbox']});
+            browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']});
             page = (await browser.pages())[0];
         }
       
