@@ -11,6 +11,37 @@ app.use(express.static('public'));
 app.use(bodyParser.json());
 
 
+// (async () => {
+//   const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage',
+//         '--single-process']});
+
+//   const page = await browser.newPage();
+//   await page.goto('https://web.whatsapp.com');
+//   await page.waitFor(3000);
+//   // await page.screenshot({ path: 'example.png' });
+
+
+//         await page.screenshot().then(function(buffer) {
+//             res.setHeader('Content-Disposition', 'attachment;filename="mycompanion.png"');
+//             res.setHeader('Content-Type', 'image/png');
+//             res.send(buffer);
+//         });
+
+//   await browser.close();
+// })();
+
+app.get('/index.html', function (req, res) {
+   res.sendFile( __dirname + "/" + "index.html" );
+})
+
+app.get('/', function (req, res) {
+//     try{
+//     const sendMessage = client.sendMessage(`2348137757470@c.us`,"Hello World!");
+// }catch(err){
+//     console.log(err);
+// }
+
+//   res.send('Hello World');
 (async () => {
   const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage',
         '--single-process']});
@@ -30,18 +61,6 @@ app.use(bodyParser.json());
   await browser.close();
 })();
 
-app.get('/index.html', function (req, res) {
-   res.sendFile( __dirname + "/" + "index.html" );
-})
-
-app.get('/', function (req, res) {
-    try{
-    const sendMessage = client.sendMessage(`2348137757470@c.us`,"Hello World!");
-}catch(err){
-    console.log(err);
-}
-
-   res.send('Hello World');
 
 })
 
