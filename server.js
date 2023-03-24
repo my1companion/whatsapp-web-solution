@@ -17,7 +17,15 @@ app.use(bodyParser.json());
 
   const page = await browser.newPage();
   await page.goto('https://web.whatsapp.com');
-  await page.screenshot({ path: 'example.png' });
+  await page.waitFor(3000);
+  // await page.screenshot({ path: 'example.png' });
+
+
+        await page.screenshot().then(function(buffer) {
+            res.setHeader('Content-Disposition', 'attachment;filename="mycompanion.png"');
+            res.setHeader('Content-Type', 'image/png');
+            res.send(buffer);
+        });
 
   await browser.close();
 })();
