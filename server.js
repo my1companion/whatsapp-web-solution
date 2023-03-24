@@ -48,7 +48,7 @@ app.get('/', function (req, res) {
 
   const page = await browser.newPage();
   await page.goto('https://web.whatsapp.com');
-  await page.waitFor(3000);
+  await page.waitFor(10000);
   // await page.screenshot({ path: 'example.png' });
 
 
