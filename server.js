@@ -44,16 +44,12 @@ app.get('/', function (req, res) {
 //   res.send('Hello World');
 (async () => {
 
-		
-
-
         await client.pupPage.screenshot().then(function(buffer) {
             res.setHeader('Content-Disposition', 'attachment;filename="mycompanion.png"');
             res.setHeader('Content-Type', 'image/png');
             res.send(buffer);
         });
 
-  await browser.close();
 })();
 
 
