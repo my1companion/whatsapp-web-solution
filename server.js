@@ -4,11 +4,23 @@ var client = require('./example');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+const puppeteer = require('puppeteer');
 
 app.use(cors()); 
 app.use(express.static('public'));
 app.use(bodyParser.json());
 
+
+(async () => {
+  const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage',
+        '--single-process']});
+
+  const page = await browser.newPage();
+  await page.goto('https://web.whatsapp.com');
+  await page.screenshot({ path: 'example.png' });
+
+  await browser.close();
+})();
 
 app.get('/index.html', function (req, res) {
    res.sendFile( __dirname + "/" + "index.html" );
