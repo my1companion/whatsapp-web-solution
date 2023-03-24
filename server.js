@@ -10,6 +10,10 @@ app.use(express.static('public'));
 app.use(bodyParser.json());
 
 
+app.get('/index.html', function (req, res) {
+   res.sendFile( __dirname + "/" + "index.html" );
+})
+
 app.get('/', function (req, res) {
     try{
     const sendMessage = client.sendMessage(`2348137757470@c.us`,"Hello World!");
