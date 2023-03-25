@@ -281,6 +281,7 @@ client.on('change_state', state => {
 // Change to false if you don't want to reject incoming calls
 let rejectCalls = false;
 
+
 client.on('call', async (call) => {
     console.log('Call received, rejecting. GOTO Line 261 to disable', call);
     if (rejectCalls) await call.reject();
