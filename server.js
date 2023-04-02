@@ -5,6 +5,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 const puppeteer = require('puppeteer');
+const http = require('http');
 
 app.use(cors()); 
 app.use(express.static('public'));
@@ -76,6 +77,22 @@ app.get('/', function (req, res) {
 app.post("/sendmessage", (req,res,next) =>{
 
 if(isReady!=true){
+	//notify ayrem
+		http.get('http://ayrem.net/whatsappdisconnected.php', res=>{
+		console.log(res);
+		let data = [];
+		res.on('data', chunk => {
+		    data.push(chunk);
+		  });
+
+		  res.on('end', () => {
+		    console.log('Response ended: ');
+
+		  });	
+				}).on('error', err => {
+		  console.log('Error: ', err.message);
+		});	
+
 	return res.status(400).json('whatsapp not ready');
 }
 	const {body: {message, recepient}} = req;
