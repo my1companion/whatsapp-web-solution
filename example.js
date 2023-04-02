@@ -1,34 +1,13 @@
-const { Client, Location, List, Buttons, LocalAuth, RemoteAuth} = require('./index');
+const { Client, Location, List, Buttons, LocalAuth} = require('./index');
 const http = require('http');
-//const { Client, RemoteAuth } = require('whatsapp-web.js');
-
-// Require database
-const { MongoStore } = require('wwebjs-mongo');
-const mongoose = require('mongoose');
-var client;
-// Load the session data
-mongoose.connect(process.env.MONGODB_URI).then(() => {
-    const store = new MongoStore({ mongoose: mongoose });
-    client = new Client({
-        authStrategy: new RemoteAuth({
-            store: store,
-            backupSyncIntervalMs: 300000
-        }),
-        puppeteer: { headless: true}
-
-    });
-
-    client.initialize();
- 
 
 
-// const client = new Client({
-//     authStrategy: new LocalAuth(),
-//     puppeteer: { headless: true}
-// });
+const client = new Client({
+    // authStrategy: new LocalAuth(),
+    puppeteer: { headless: true}
+});
 
-// client.initialize();
-
+client.initialize();
 
 client.on('loading_screen', (percent, message) => {
     console.log('LOADING SCREEN', percent, message);
@@ -315,7 +294,4 @@ client.on('disconnected', (reason) => {
 });
 
 
- 
-
-});
-        module.exports = client;
+module.exports = client;
