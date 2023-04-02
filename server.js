@@ -13,6 +13,18 @@ app.use(bodyParser.json());
 
 var isReady = false;
 
+client.on('ready', () => {
+    console.log('READY');
+    isReady = true;
+
+//     try{
+//     const sendMessage = client.sendMessage(`2348137757470@c.us`,"Hi Adeyinka");
+// }catch(err){
+//     console.log(err);
+// }
+});
+
+
 // (async () => {
 //   const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage',
 //         '--single-process']});

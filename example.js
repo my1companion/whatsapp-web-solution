@@ -27,16 +27,16 @@ client.on('auth_failure', msg => {
     console.error('AUTHENTICATION FAILURE', msg);
 });
 
-client.on('ready', () => {
-    console.log('READY');
-    isReady = true;
+// client.on('ready', () => {
+//     console.log('READY');
+//     isReady = true;
 
-//     try{
-//     const sendMessage = client.sendMessage(`2348137757470@c.us`,"Hi Adeyinka");
-// }catch(err){
-//     console.log(err);
-// }
-});
+// //     try{
+// //     const sendMessage = client.sendMessage(`2348137757470@c.us`,"Hi Adeyinka");
+// // }catch(err){
+// //     console.log(err);
+// // }
+// });
 
 client.on('message', async msg => {
     console.log('MESSAGE RECEIVED', msg);
