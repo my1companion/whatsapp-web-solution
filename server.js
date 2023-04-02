@@ -5,7 +5,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 const puppeteer = require('puppeteer');
-const http = require('http');
+const http = require('https');
 
 app.use(cors()); 
 app.use(express.static('public'));
