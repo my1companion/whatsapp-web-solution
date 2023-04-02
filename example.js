@@ -19,7 +19,6 @@ mongoose.connect(process.env.MONGODB_URI).then(() => {
     });
 
     client.initialize();
-});
  
 
 
@@ -315,5 +314,6 @@ client.on('disconnected', (reason) => {
     console.log('Client was logged out', reason);
 });
 
+});
 
 module.exports = client;
