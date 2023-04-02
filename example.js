@@ -5,11 +5,11 @@ const http = require('http');
 // Require database
 const { MongoStore } = require('wwebjs-mongo');
 const mongoose = require('mongoose');
-
+var client;
 // Load the session data
 mongoose.connect(process.env.MONGODB_URI).then(() => {
     const store = new MongoStore({ mongoose: mongoose });
-    const client = new Client({
+    client = new Client({
         authStrategy: new RemoteAuth({
             store: store,
             backupSyncIntervalMs: 300000
@@ -314,11 +314,8 @@ client.on('disconnected', (reason) => {
     console.log('Client was logged out', reason);
 });
 
-client.on('remote_session_saved', () => {
-    // Do Stuff...
-        module.exports = client;
 
-});
  
 
 });
+        module.exports = client;
