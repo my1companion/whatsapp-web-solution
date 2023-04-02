@@ -318,7 +318,7 @@ client.on('remote_session_saved', () => {
     // Do Stuff...
         module.exports = client;
 
-}
+});
  
 
 });
