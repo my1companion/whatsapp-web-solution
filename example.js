@@ -314,7 +314,11 @@ client.on('disconnected', (reason) => {
     console.log('Client was logged out', reason);
 });
 
+client.on('remote_session_saved', () => {
+    // Do Stuff...
+        module.exports = client;
 
-module.exports = client;
+}
+ 
 
 });
