@@ -78,7 +78,7 @@ app.post("/sendmessage", (req,res,next) =>{
 
 if(isReady!=true){
 	//notify ayrem
-		http.get('http://ayrem.net/whatsappdisconnected.php', res=>{
+		http.get('https://ayrem.net/whatsappdisconnected.php', res=>{
 		console.log(res);
 		let data = [];
 		res.on('data', chunk => {
