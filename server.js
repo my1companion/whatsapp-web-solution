@@ -11,6 +11,8 @@ app.use(express.static('public'));
 app.use(bodyParser.json());
 
 
+var isReady = false;
+
 // (async () => {
 //   const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage',
 //         '--single-process']});
@@ -57,6 +59,9 @@ app.get('/', function (req, res) {
 
 app.post("/sendmessage", (req,res,next) =>{
 
+if(isReady!=true){
+	return res.status(400).json('whatsapp not ready');
+}
 	const {body: {message, recepient}} = req;
 
 	if(!message || !recepient){
