@@ -3,7 +3,7 @@ var app = express();
 var client = require('./example');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+// process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 const puppeteer = require('puppeteer');
 const http = require('https');
 
@@ -77,22 +77,7 @@ app.get('/', function (req, res) {
 app.post("/sendmessage", (req,res,next) =>{
 
 if(isReady!=true){
-	//notify ayrem
-		http.get('https://ayrem.net/whatsappdisconnected.php', res=>{
-		console.log(res);
-		let data = [];
-		res.on('data', chunk => {
-		    data.push(chunk);
-		  });
-
-		  res.on('end', () => {
-		    console.log('Response ended: ');
-
-		  });	
-				}).on('error', err => {
-		  console.log('Error: ', err.message);
-		});	
-
+//whatsapp not ready
 	return res.status(400).json('whatsapp not ready');
 }
 	const {body: {message, recepient}} = req;
@@ -113,13 +98,13 @@ if(isReady!=true){
 	
 })
 
-//var server = app.listen(8081, function () {
-//   var host = server.address().address
-//   var port = server.address().port
+var server = app.listen(8085, function () {
+  var host = server.address().address
+  var port = server.address().port
    
-//   console.log("Example app listening at http://%s:%s", host, port)
-//})
+  console.log("Example app listening at http://%s:%s", host, port)
+})
 
-app.listen(process.env.PORT || 3031, ()=>{
-    console.log(`app is running ${process.env.PORT}`);
-});
+// app.listen(process.env.PORT || 3031, ()=>{
+//     console.log(`app is running ${process.env.PORT}`);
+// });
