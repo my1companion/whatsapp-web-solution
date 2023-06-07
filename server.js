@@ -113,13 +113,13 @@ if(isReady!=true){
 	
 })
 
-//var server = app.listen(8081, function () {
-//   var host = server.address().address
-//   var port = server.address().port
+var server = app.listen(4000, function () {
+  var host = server.address().address
+  var port = server.address().port
    
-//   console.log("Example app listening at http://%s:%s", host, port)
-//})
+  console.log("Example app listening at http://%s:%s", host, port)
+})
 
-app.listen(process.env.PORT || 3031, ()=>{
-    console.log(`app is running ${process.env.PORT}`);
-});
+// app.listen(process.env.PORT || 3031, ()=>{
+//     console.log(`app is running ${process.env.PORT}`);
+// });
