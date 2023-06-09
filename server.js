@@ -3,7 +3,7 @@ var app = express();
 var client = require('./example');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+// process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 const puppeteer = require('puppeteer');
 const http = require('https');
 
