@@ -77,21 +77,6 @@ app.get('/', function (req, res) {
 app.post("/sendmessage", (req,res,next) =>{
 
 if(isReady!=true){
-	//notify ayrem
-		http.get('https://ayrem.net/whatsappdisconnected.php', res=>{
-		console.log(res);
-		let data = [];
-		res.on('data', chunk => {
-		    data.push(chunk);
-		  });
-
-		  res.on('end', () => {
-		    console.log('Response ended: ');
-
-		  });	
-				}).on('error', err => {
-		  console.log('Error: ', err.message);
-		});	
 
 	return res.status(400).json('whatsapp not ready');
 }
