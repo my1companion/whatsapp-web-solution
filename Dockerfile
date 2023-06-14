@@ -8,5 +8,5 @@ RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key
 RUN apt-get update && apt-get -y install google-chrome-stable
 RUN npm install
 RUN npm audit fix
-EXPOSE 4000
+EXPOSE 3000
 CMD npm start
