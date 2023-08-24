@@ -1,10 +1,11 @@
 const { Client, Location, List, Buttons, LocalAuth} = require('./index');
 const http = require('http');
+const axios = require('axios');
 
 
 const client = new Client({
     // authStrategy: new LocalAuth(),
-    puppeteer: { headless: true}
+    puppeteer: { headless: false}
 });
 
 client.initialize();
@@ -54,6 +55,28 @@ client.on('message', async msg => {
 // 		}).on('error', err => {
 //   console.log('Error: ', err.message);
 // });
+
+    //notifiy sociallender
+    // var data = {phone:msg.from, body:msg.body}
+    // data = JSON.stringify(data);
+
+    // var config = {
+    //   method: 'post',
+    //   url: 'http://sociallenderng.com/apisl/v3/callbacks/whatsappwebapi',
+    //   headers: { 
+    //     'Content-Type': 'text/plain'
+    //   },
+    //   data : data
+    // };
+
+    // axios(config)
+    // .then(function (response) {
+    //   console.log(response.data);
+    // })
+    // .catch(function (error) {
+    //   console.log(error);
+    // });
+
     if (msg.body === '!ping reply') {
         // Send a new message as a reply to the current one
         msg.reply('pong');

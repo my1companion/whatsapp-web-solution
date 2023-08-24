@@ -1,6 +1,8 @@
 var express = require('express');
 var app = express();
 var client = require('./example');
+const { MessageMedia} = require('./index');
+
 const cors = require('cors');
 const bodyParser = require('body-parser');
 // process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
@@ -73,14 +75,19 @@ app.get('/', function (req, res) {
 
 
 })
+      var media;
+async function sendMedia(receiver,mediaUrl){
+       media = await MessageMedia.fromUrl(mediaUrl);
+       client.sendMessage(receiver,media);    
 
+}
 app.post("/sendmessage", (req,res,next) =>{
 
 if(isReady!=true){
 
 	return res.status(400).json('whatsapp not ready');
 }
-	const {body: {message, recepient}} = req;
+	const {body: {message, recepient, mediaLink}} = req;
 
 	if(!message || !recepient){
 		return res.status(400).json('incomplete credentials');
@@ -88,7 +95,14 @@ if(isReady!=true){
 	var receiver = recepient+"@c.us";
 	
     try{
-    const sendMessage = client.sendMessage(receiver,message);
+   //   setInterval(function(){
+    var sendMessage = client.sendMessage(receiver,message);
+    if(mediaLink){
+        sendMedia(receiver,mediaLink);
+
+    }
+   // },1000)
+
 }catch(err){
     console.log(err);
 	res.send(err);

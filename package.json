@@ -34,6 +34,7 @@
   "homepage": "https://wwebjs.dev/",
   "dependencies": {
     "@pedroslopez/moduleraid": "^5.0.2",
+    "axios": "^1.4.0",
     "body-parser": "^1.20.2",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
@@ -46,7 +47,8 @@
     "node-fetch": "^2.6.5",
     "node-webpmux": "^3.1.0",
     "puppeteer": "^13.0.0",
-    "wwebjs-mongo": "^1.1.0"
+    "wwebjs-mongo": "^1.1.0",
+    "whatsapp-web.js": "https://github.com/Julzk/whatsapp-web.js/tarball/jkr_hotfix_8"
   },
   "devDependencies": {
     "@types/node-fetch": "^2.5.12",
