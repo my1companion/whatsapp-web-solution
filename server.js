@@ -30,8 +30,8 @@ client.on('ready', () => {
 
 client.on('message', async msg => {
     console.log('MESSAGE RECEIVED', msg);
-
-    if(msg.from.includes("8137757470")){
+//change this for whatsapp client
+    if(msg.from.includes("7069205659")){
 
       newsletterMessage = msg.body;
     }
