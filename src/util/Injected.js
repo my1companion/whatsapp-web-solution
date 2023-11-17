@@ -10,7 +10,8 @@ exports.ExposeStore = (moduleRaidStr) => {
     window.Store.Conn = window.mR.findModule('Conn')[0].Conn;
     window.Store.BlockContact = window.mR.findModule('blockContact')[0];
     // window.Store.Call = window.mR.findModule('CallCollection')[0].CallCollection;
-    window.Store.Cmd = window.mR.findModule('Cmd')[0].Cmd;
+    // window.Store.Cmd = window.mR.findModule('Cmd')[0].Cmd;
+    window.Store.Call = window.mR.findModule('Call')[0].default.Call;
     window.Store.CryptoLib = window.mR.findModule('decryptE2EMedia')[0];
     window.Store.DownloadManager = window.mR.findModule('downloadManager')[0].downloadManager;
     window.Store.GroupMetadata = window.mR.findModule('GroupMetadata')[0].default.GroupMetadata;
@@ -74,6 +75,12 @@ exports.ExposeStore = (moduleRaidStr) => {
         };
     }
 
+
+if (window.mR.findModule('ChatCollection')[0] && window.mR.findModule('ChatCollection')[0].ChatCollection) {
+    if (typeof window.mR.findModule('ChatCollection')[0].ChatCollection.findImpl === 'undefined' && typeof window.mR.findModule('ChatCollection')[0].ChatCollection._find != 'undefined') {
+        window.mR.findModule('ChatCollection')[0].ChatCollection.findImpl = window.mR.findModule('ChatCollection')[0].ChatCollection._find;
+    }
+}
     // TODO remove these once everybody has been updated to WWebJS with legacy sessions removed
     const _linkPreview = window.mR.findModule('queryLinkPreview');
     if (_linkPreview && _linkPreview[0] && _linkPreview[0].default) {
