@@ -97,10 +97,10 @@ class Client extends EventEmitter {
                 browserArgs.push(`--user-agent=${this.options.userAgent}`);
             }
 
-            // browser = await puppeteer.launch({ headless: false });
+            browser = await puppeteer.launch({ headless: false });
             // page = (await browser.pages())[0];
-                browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage',
-        '--single-process']});
+        //         browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage',
+        // '--single-process']});
                 page = (await browser.pages())[0];        }
       
         await page.setUserAgent(this.options.userAgent);
